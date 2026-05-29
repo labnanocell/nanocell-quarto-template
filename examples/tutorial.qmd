@@ -1,0 +1,52 @@
+---
+title: "HCA — Introdução ao High-Content Imaging e High-Content Analysis"
+subtitle: "Curso de HCI/HCA"
+author: "NanoCell Interactions Lab"
+date: today
+lang: pt-BR
+
+format:
+  pdf:
+    documentclass: scrartcl
+    pdf-engine: xelatex
+    toc: true
+    number-sections: true
+    include-in-header:
+      - ../styles/nanocell.tex
+---
+
+# HCA — Introdução ao High-Content Imaging e High-Content Analysis
+
+**Ao final deste módulo, espera-se que você seja capaz de:**
+
+- definir, em termos gerais, o que são *High-Content Imaging* (HCI) e *High-Content Analysis* (HCA);
+- reconhecer a diferença didática entre aquisição de imagens e análise quantitativa;
+- identificar, em linhas gerais, o que se entende por *image-based profiling* e perfil fenotípico;
+- compreender por que ensaios baseados em imagem exigem cuidado com planejamento, execução e interpretação.
+
+**Entregáveis do módulo**
+
+- uma descrição curta, com suas próprias palavras, do que significam HCI e HCA;
+- uma distinção simples entre aquisição de imagens, análise de imagens e perfilamento fenotípico.
+
+::: {.callout-note}
+## Ideia central
+
+Se HCI produz imagens de forma estruturada, HCA transforma essas imagens em dados analisáveis.
+:::
+
+## Introdução
+
+A análise de imagens biológicas existe há muitas décadas e reúne diferentes abordagens, objetivos e ferramentas. Nos últimos anos, as abordagens baseadas em imagem ganharam ainda mais destaque, especialmente aquelas em que as imagens deixam de ser apenas ilustração ou “imagem representativa” e passam a ocupar um papel central na resposta à pergunta científica.
+
+Neste contexto, surgem termos como *High-Throughput Screening* (HTS), *High-Content Screening* (HCS), *High-Content Imaging* (HCI), *High-Content Analysis* (HCA) e *image-based profiling*. Esses termos nem sempre são usados de forma consistente na literatura, o que pode ser confuso para quem está começando. Aqui, a proposta não é esgotar o debate terminológico, mas estabelecer uma base conceitual útil para o restante da nossa jornada.
+
+
+::: {.callout-info}
+## Ideia central
+
+Em abordagens de alto conteúdo baseadas em imagem, não basta adquirir imagens; é preciso transformar imagens em dados quantitativos capazes de sustentar uma inferência biológica.
+:::
+
+Ao longo do curso, muitos desses conceitos vão se tornar mais concretos na prática. Por ora, vamos alinhar uma linguagem comum: o que estamos chamando de HCI e HCA, e por que isso muda a forma de planejar, executar e interpretar um experimento.
+

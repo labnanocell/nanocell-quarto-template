@@ -1,0 +1,227 @@
+% NanoCell Quarto PDF style
+% Robust KOMA-compatible style for Quarto/Pandoc PDFs
+% Use with documentclass: scrartcl and pdf-engine: xelatex
+
+% ------------------------------------------------------------
+% Core packages
+% ------------------------------------------------------------
+
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage[font=small,labelfont=bf]{caption}
+
+% tcolorbox is used by Quarto callouts in PDF.
+% Loading [most] prevents errors with options such as "enhanced".
+\usepackage[most]{tcolorbox}
+
+% ------------------------------------------------------------
+% NanoCell brand colors
+% ------------------------------------------------------------
+
+\definecolor{NanoOrange}{HTML}{F58220}
+\definecolor{NanoRed}{HTML}{C8423A}
+\definecolor{NanoDark}{HTML}{2D2D2D}
+\definecolor{NanoGray}{HTML}{666666}
+\definecolor{NanoLightGray}{HTML}{F4F4F2}
+\definecolor{NanoPaper}{HTML}{FBFAF8}
+
+% ------------------------------------------------------------
+% Typography
+% ------------------------------------------------------------
+% Body: elegant scientific serif
+% Headings: modern humanist/geometric sans-serif
+% Code: functional monospace
+
+\IfFontExistsTF{Source Serif 4}{
+  \setmainfont{Source Serif 4}
+}{
+  \IfFontExistsTF{Libertinus Serif}{
+    \setmainfont{Libertinus Serif}
+  }{
+    \setmainfont{Georgia}
+  }
+}
+
+\IfFontExistsTF{Alegreya Sans}{
+  \setsansfont{Alegreya Sans}
+}{
+  \IfFontExistsTF{Inter}{
+    \setsansfont{Inter}
+  }{
+    \IfFontExistsTF{Helvetica Neue}{
+      \setsansfont{Helvetica Neue}
+    }{
+      \setsansfont{Arial}
+    }
+  }
+}
+
+\IfFontExistsTF{JetBrains Mono}{
+  \setmonofont{JetBrains Mono}
+}{
+  \IfFontExistsTF{Menlo}{
+    \setmonofont{Menlo}
+  }{
+    \setmonofont{Courier New}
+  }
+}
+
+\setstretch{1.28}
+\setlength{\parskip}{0.72em}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{18pt}
+
+% ------------------------------------------------------------
+% KOMA-native title and section styling
+% ------------------------------------------------------------
+% Avoid titlesec/titling because they often conflict with Quarto + scrartcl.
+
+\setkomafont{title}{\Huge\bfseries\sffamily\color{NanoDark}}
+\setkomafont{subtitle}{\Large\sffamily\color{NanoGray}}
+\setkomafont{author}{\large\sffamily\color{NanoGray}}
+\setkomafont{date}{\normalsize\sffamily\color{NanoGray}}
+
+\setkomafont{section}{\Large\bfseries\sffamily\color{NanoDark}}
+\setkomafont{subsection}{\large\bfseries\sffamily\color{NanoDark}}
+\setkomafont{subsubsection}{\normalsize\bfseries\sffamily\color{NanoGray}}
+
+\RedeclareSectionCommand[
+  beforeskip=2.3em,
+  afterskip=0.85em
+]{section}
+
+\RedeclareSectionCommand[
+  beforeskip=1.6em,
+  afterskip=0.55em
+]{subsection}
+
+\RedeclareSectionCommand[
+  beforeskip=1.1em,
+  afterskip=0.35em
+]{subsubsection}
+
+% ------------------------------------------------------------
+% Header and footer
+% ------------------------------------------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+
+% Logo path: when rendering examples/tutorial.qmd from project root,
+% the generated .tex is compiled inside examples/, so ../assets works.
+\newcommand{\NanoCellHeaderLogo}{%
+  \IfFileExists{../assets/logo/Nano_final_logo-H.png}{%
+    \includegraphics[height=0.50cm]{../assets/logo/Nano_final_logo-H.png}%
+  }{%
+    \IfFileExists{assets/logo/Nano_final_logo-H.png}{%
+      \includegraphics[height=0.50cm]{assets/logo/Nano_final_logo-H.png}%
+    }{%
+      {\sffamily\bfseries NanoCell}%
+    }%
+  }%
+}
+
+\lhead{\NanoCellHeaderLogo}
+\rhead{\small\sffamily\color{NanoGray} Curso de HCI/HCA}
+\cfoot{\small\sffamily\color{NanoGray} Página \thepage\ de \pageref{LastPage}}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{%
+  \hbox to\headwidth{%
+    \color{NanoOrange}\leaders\hrule height \headrulewidth\hskip 0.65\headwidth
+    \color{NanoRed}\leaders\hrule height \headrulewidth\hfill
+  }%
+}
+\renewcommand{\footrulewidth}{0pt}
+
+% Make the first page use the same visual identity.
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \lhead{\NanoCellHeaderLogo}%
+  \rhead{\small\sffamily\color{NanoGray} Curso de HCI/HCA}%
+  \cfoot{\small\sffamily\color{NanoGray} Página \thepage\ de \pageref{LastPage}}%
+  \renewcommand{\headrulewidth}{0.5pt}%
+}
+
+% ------------------------------------------------------------
+% Lists
+% ------------------------------------------------------------
+
+\setlist[itemize]{leftmargin=1.4em, itemsep=0.25em, topsep=0.25em}
+\setlist[enumerate]{leftmargin=1.6em, itemsep=0.25em, topsep=0.25em}
+
+% ------------------------------------------------------------
+% Callouts / tcolorbox defaults
+% ------------------------------------------------------------
+% Quarto creates specific tcolorboxes for callouts. These defaults
+% make them more subtle and aligned with NanoCell colors.
+
+\tcbset{
+  boxrule=0pt,
+  leftrule=4pt,
+  arc=2mm,
+  left=8pt,
+  right=8pt,
+  top=7pt,
+  bottom=7pt,
+  colback=NanoLightGray,
+  colframe=NanoOrange,
+  before skip=12pt,
+  after skip=12pt,
+  fonttitle=\sffamily\bfseries
+}
+
+% ------------------------------------------------------------
+% Captions
+% ------------------------------------------------------------
+
+\captionsetup{
+  labelfont={bf},
+  textfont={small},
+  singlelinecheck=false
+}
+
+% ------------------------------------------------------------
+% Links
+% ------------------------------------------------------------
+% Quarto/Pandoc loads hyperref. We configure it only after all packages
+% have loaded, avoiding "Undefined control sequence" errors.
+
+\makeatletter
+\AtBeginDocument{%
+  \@ifpackageloaded{hyperref}{%
+    \hypersetup{
+      colorlinks=true,
+      linkcolor=NanoRed,
+      urlcolor=NanoRed,
+      citecolor=NanoOrange
+    }%
+  }{}%
+}
+\makeatother
+
+% ------------------------------------------------------------
+% Subtle title separator
+% ------------------------------------------------------------
+% Adds a small NanoCell color line after the title block without redefining \maketitle.
+% This is intentionally conservative to avoid Quarto/Pandoc title conflicts.
+
+\makeatletter
+\g@addto@macro\@maketitle{%
+  \par\vspace{0.5em}
+  \noindent
+  \begin{tikzpicture}
+    \fill[NanoOrange] (0,0) rectangle (4.8,0.06);
+    \fill[NanoRed] (4.8,0) rectangle (7.6,0.06);
+    \fill[NanoDark] (7.6,0) rectangle (10.0,0.06);
+  \end{tikzpicture}
+  \par\vspace{0.8em}
+}
+\makeatother

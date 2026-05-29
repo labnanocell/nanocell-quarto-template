@@ -1,0 +1,25 @@
+project:
+  type: default
+
+format:
+  pdf:
+    documentclass: scrartcl
+    pdf-engine: xelatex
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    colorlinks: true
+    fontsize: 11pt
+    linestretch: 1.28
+    geometry:
+      - top=2.6cm
+      - bottom=2.6cm
+      - left=2.8cm
+      - right=2.8cm
+    include-in-header:
+      - styles/nanocell.tex
+
+  html:
+    theme:
+      - cosmo
+      - styles/nanocell.scss

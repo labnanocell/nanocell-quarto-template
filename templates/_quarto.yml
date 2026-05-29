@@ -1,0 +1,38 @@
+---
+title: "HCA — Introdução ao High-Content Imaging e High-Content Analysis"
+subtitle: "Curso de HCI/HCA"
+author: "NanoCell Interactions Lab"
+date: today
+lang: pt-BR
+
+toc: true
+toc-depth: 2
+number-sections: true
+
+format:
+  pdf:
+    documentclass: scrartcl
+    fontsize: 11pt
+    linestretch: 1.25
+
+    geometry:
+      - top=2.6cm
+      - bottom=2.6cm
+      - left=2.8cm
+      - right=2.8cm
+
+    colorlinks: true
+
+    include-in-header:
+      - ../styles/nanocell.tex
+
+  html:
+    theme:
+      - cosmo
+      - ../styles/nanocell.scss
+
+execute:
+  echo: false
+  warning: false
+  message: false
+---
